@@ -7,7 +7,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import App from './App';
 import store from './redux/store';
 import './index.css';
-
+//лаболаторная раьота N7 была выполнена в процессе 5 лабы
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
