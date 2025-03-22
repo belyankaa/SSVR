@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Container from "./components/Container";
+import NavBar from "./components/navBar";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <NavBar/>
+      <Container>
+          <App />
+      </Container>
   </React.StrictMode>
 );
 
