@@ -1,14 +1,24 @@
 // src/components/Header.jsx
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   AppBar,
   Toolbar,
   Typography,
+  Button,
   IconButton,
   Menu,
   MenuItem,
 } from '@mui/material';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../context/ThemeContext';
+import useLoginState from '../hooks/useLoginState';
+import ProfileButton from "../components/ProfileButton"; // Импортируем хук для проверки авторизации
+
+const mainMenuItems = [
+  { label: 'Главная', link: '/' },
+];
 
 const labMenuItems = [
   { label: 'Лабораторная 1', link: '/lab1' },
@@ -17,6 +27,9 @@ const labMenuItems = [
 ];
 
 const Header = () => {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const isLoggedIn = useLoginState(); // Проверяем статус авторизации
+
   const [anchorEl, setAnchorEl] = React.useState(null); // Состояние для выпадающего меню
   const open = Boolean(anchorEl);
 
@@ -85,6 +98,33 @@ const Header = () => {
         >
           Мое React-приложение
         </Typography>
+
+        {/* Основные ссылки (только "Главная") */}
+        {mainMenuItems.map((item, index) => (
+          <Button key={index} component={Link} to={item.link} color="inherit" sx={{ ml: 2 }}>
+            {item.label}
+          </Button>
+        ))}
+
+        {/* Кнопка "Зарегистрироваться", доступная только для неавторизованных пользователей */}
+        {!isLoggedIn && ( // Показываем кнопку только если пользователь НЕ авторизован
+          <Button
+            component={Link}
+            to="/registration"
+            color="inherit"
+            sx={{ ml: 2 }}
+          >
+            Зарегистрироваться
+          </Button>
+        )}
+
+        {/* Кнопка смены темы */}
+        <IconButton onClick={toggleTheme} color="inherit">
+          {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+        </IconButton>
+
+        {/* Кнопка профиля (доступна только для авторизованных пользователей) */}
+        {isLoggedIn && <ProfileButton />} {/* Показываем кнопку профиля только если пользователь авторизован */}
       </Toolbar>
     </AppBar>
   );
