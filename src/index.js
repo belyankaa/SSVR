@@ -4,15 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Container from "./components/Container";
-import NavBar from "./components/navBar";
+import Header from "./layout/Header";
+import Footer from "./layout/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <NavBar/>
+      <Header/>
       <Container>
           <App />
       </Container>
+      <Footer/>
   </React.StrictMode>
 );
 
