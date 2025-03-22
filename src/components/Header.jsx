@@ -13,8 +13,8 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
-import useLoginState from '../hooks/useLoginState';
-import ProfileButton from "../components/ProfileButton"; // Импортируем хук для проверки авторизации
+import ProfileButton from './ProfileButton';
+import useLoginState from '../hooks/useLoginState'; // Импортируем хук для проверки авторизации
 
 const mainMenuItems = [
   { label: 'Главная', link: '/' },

@@ -42,6 +42,14 @@ const Footer = () => {
       }}
     >
       {/* Кнопка для открытия формы отзывов */}
+      <Button
+        variant="text"
+        onClick={() => setIsFeedbackOpen(true)} // Открываем форму при клике
+        sx={{ color: '#FFD700', textDecoration: 'underline', cursor: 'pointer' }}
+      >
+        Оставить отзыв
+      </Button>
+
       {/* Надпись в футере */}
       <Typography variant="body2" sx={{ mt: 1 }}>
         &copy; {new Date().getFullYear()} Мое React-приложение. Все права защищены.
@@ -75,6 +83,9 @@ const Footer = () => {
               margin="normal"
               sx={{ maxWidth: '100%' }}
             />
+            <Button type="submit" variant="contained" sx={{ mt: 2 }}>
+              Отправить отзыв
+            </Button>
           </form>
 
           {/* Список отзывов */}

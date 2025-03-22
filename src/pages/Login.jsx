@@ -15,6 +15,10 @@ const Login = () => {
     navigate('/');
   }
 
+  const handleLogin = () => {
+
+  };
+
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
